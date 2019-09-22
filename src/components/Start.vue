@@ -43,11 +43,11 @@
         </div>
       </div>
     </div>
-    <button @click="more" v-if="accts">More</button>
+    <button @click="more" v-if="accts">More</button><br><br>
   </div>
   <div v-else>
     <input type="text" v-model="domain" />
-    <button @click="login">Login</button>
+    <button @click="login" placeholder="domain.tld">Login</button>
   </div>
 </template>
 
