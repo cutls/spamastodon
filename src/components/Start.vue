@@ -277,7 +277,7 @@ export default {
     },
     logout: function() {
       if (confirm("logout?")) {
-        localStorage.clearItem();
+        localStorage.clear();
         location.reload();
       }
     }
