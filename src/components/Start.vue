@@ -315,7 +315,7 @@ a {
   border-bottom: 0.5px solid;
   padding-right: 2px;
   word-break: break-word;
-  width: 100%;
+  width: calc(100% - 10px);
   display: grid;
   grid-template-columns: 43px 1fr 0;
   grid-template-rows: auto 1.6rem 1fr auto auto;
@@ -364,6 +364,7 @@ a {
   margin-bottom: 5px;
   margin-left: 5px;
   grid-area: toot;
+  width:100%;
 }
 
 .area-date_via {
