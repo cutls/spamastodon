@@ -21,7 +21,7 @@
       <button @click="act('suspend')">Suspend</button>
     </div>
     <div v-for="acct in accts" :key="acct.id" v-if="check(acct.account)">
-      <input type="checkbox" :value="acct.id" v-model="checkedAccts" />
+      <input type="checkbox" :value="acct.id" :id="genId(acct.id)" v-model="checkedAccts" />
       <b>@{{acct.account.acct}}</b>
       <div class="cvo" style="padding-top:5px;">
         <div class="area-icon">
@@ -159,6 +159,9 @@ export default {
         this.isRemote = true;
       }
       this.get();
+    },
+    genId: function(id) {
+      return "acct_" + id;
     },
     get: function() {
       if (!this.moreLoader) {
