@@ -30,10 +30,10 @@
         <div class="area-display_name">
           <div class="flex-name">
             <span class="user">{{acct.account.display_name}}</span>
-            <span
+            <a :href="acct.account.url" 
               class="sml gray"
               style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;user-select:auto; cursor:text;"
-            >@{{acct.account.acct}}</span>
+            >@{{acct.account.acct}}</a>
           </div>
         </div>
         <div class="area-toot acct-note" v-html="acct.account.note.replace(/<br\s?\/?>.+/g, '...')"></div>
