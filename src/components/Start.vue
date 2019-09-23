@@ -22,7 +22,7 @@
     </div>
     <div v-for="acct in accts" :key="acct.id" v-if="check(acct.account)">
       <input type="checkbox" :value="acct.id" :id="genId(acct.id)" v-model="checkedAccts" />
-      <b>@{{acct.account.acct}}</b>
+      <label :for="genId(acct.id)">@{{acct.account.acct}}</label>
       <div class="cvo" style="padding-top:5px;">
         <div class="area-icon">
           <img draggable="false" :src="acct.account.avatar" width="40" class="prof-img" />
@@ -426,5 +426,8 @@ a {
   text-overflow: ellipsis;
   height: calc(0.8em + 8px);
   user-select: none;
+}
+label{
+   font-weight: bold;
 }
 </style>
