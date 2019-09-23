@@ -274,12 +274,12 @@ export default {
       } else {
         return true;
       }
-    }
-  },
-  logout: function() {
-    if (confirm("logout?")) {
-      localStorage.clearItem();
-      location.reload();
+    },
+    logout: function() {
+      if (confirm("logout?")) {
+        localStorage.clearItem();
+        location.reload();
+      }
     }
   }
 };
@@ -405,7 +405,7 @@ a {
 
 .cbadge {
   display: inline-block;
-  max-width: clac(100% - 20px);
+  max-width: calc(100% - 50px);
   padding: 3px 7px;
   margin: 3px;
   font-size: 0.8em;
