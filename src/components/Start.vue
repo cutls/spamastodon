@@ -1,5 +1,7 @@
 <template>
   <div v-if="logined">
+    <button @click="logout">Logout</button>
+    <br />
     <button @click="remote">Remote: {{isRemote}}</button>
     <br />
     <h5>Request</h5>domain:
@@ -43,7 +45,9 @@
         </div>
       </div>
     </div>
-    <button @click="more" v-if="accts">More</button><br><br>
+    <button @click="more" v-if="accts">More</button>
+    <br />
+    <br />
   </div>
   <div v-else>
     <input type="text" v-model="domain" />
@@ -216,6 +220,9 @@ export default {
       this.get(true);
     },
     act: function(act) {
+      if (!confirm("action: " + act)) {
+        return false;
+      }
       let domain = localStorage.getItem("domain");
       let at = localStorage.getItem("token");
       let targets = this.checkedAccts;
@@ -267,6 +274,12 @@ export default {
       } else {
         return true;
       }
+    }
+  },
+  logout: function() {
+    if (confirm("logout?")) {
+      localStorage.clearItem();
+      location.reload();
     }
   }
 };
@@ -392,8 +405,9 @@ a {
 
 .cbadge {
   display: inline-block;
+  max-width: clac(100% - 20px);
   padding: 3px 7px;
-  margin:3px;
+  margin: 3px;
   font-size: 0.8em;
   margin-right: 5px;
   line-height: 1;
