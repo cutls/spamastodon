@@ -21,8 +21,8 @@
       <button @click="act('suspend')">Suspend</button>
     </div>
     <div v-for="acct in accts" :key="acct.id" v-if="check(acct.account)">
-      <input type="checkbox" :value="acct.id" v-model="checkedAccts" />
-      <b>@{{acct.account.acct}}</b>
+      <input type="checkbox" :value="acct.id" :id="genId(acct.id)" v-model="checkedAccts" />
+      <label :for="genId(acct.id)">@{{acct.account.acct}}</label>
       <div class="cvo" style="padding-top:5px;">
         <div class="area-icon">
           <img draggable="false" :src="acct.account.avatar" width="40" class="prof-img" />
@@ -30,10 +30,10 @@
         <div class="area-display_name">
           <div class="flex-name">
             <span class="user">{{acct.account.display_name}}</span>
-            <span
+            <a :href="acct.account.url" 
               class="sml gray"
               style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;user-select:auto; cursor:text;"
-            >@{{acct.account.acct}}</span>
+            >@{{acct.account.acct}}</a>
           </div>
         </div>
         <div class="area-toot acct-note" v-html="acct.account.note.replace(/<br\s?\/?>.+/g, '...')"></div>
@@ -159,6 +159,9 @@ export default {
         this.isRemote = true;
       }
       this.get();
+    },
+    genId: function(id) {
+      return "acct_" + id;
     },
     get: function() {
       if (!this.moreLoader) {
@@ -423,5 +426,8 @@ a {
   text-overflow: ellipsis;
   height: calc(0.8em + 8px);
   user-select: none;
+}
+label{
+   font-weight: bold;
 }
 </style>
